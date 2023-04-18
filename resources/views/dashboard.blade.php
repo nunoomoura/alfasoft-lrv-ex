@@ -40,8 +40,13 @@
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('contacts.show', $contact) }}" class="font-medium text-blue-600 hover:underline">Edit</a>
-                                |
-                                <a href="{{ route('contacts.delete', $contact) }}" class="font-medium text-red-600 hover:underline">Remove</a>
+                                <form method="POST" action="{{ route('contacts.delete', $contact) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type submit class="appearance-none border-none font-medium text-red-600 hover:underline">
+                                        Remove
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @empty
@@ -51,9 +56,11 @@
                             </th>
                         </tr>
                         @endforelse
-
                     </tbody>
                 </table>
+            </div>
+            <div class="mt-2">
+                {{ $contacts->links() }}
             </div>
         </div>
     </div>

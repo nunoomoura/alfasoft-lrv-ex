@@ -10,14 +10,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <!-- Validation Errors -->
-                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                    <x-messages class="mb-4" :errors="$errors" />
 
                     <form method="POST" action="{{ route('contacts.update', $contact) }}">
                         @csrf
                         @method('PUT')
 
-                        <!-- Name -->
                         <div>
+                            <x-label :value="__('ID:')" />
+
+                            <div>{{ $contact->id }}</div>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="mt-4">
                             <x-label for="name" :value="__('Name')" />
 
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $contact->name)" required />
@@ -52,7 +58,12 @@
 
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-3">{{ __('Update') }}</x-button>
+                            <x-button type="button" class="ml-3" onclick="document.getElementById('deleteForm').submit()">{{ __('Delete') }}</x-button>
                         </div>
+                    </form>
+                    <form id="deleteForm" method="POST" action="{{ route('contacts.delete', $contact) }}">
+                        @csrf
+                        @method('DELETE')
                     </form>
                 </div>
             </div>

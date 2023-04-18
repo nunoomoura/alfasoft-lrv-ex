@@ -13,16 +13,3 @@
         </ul>
     </div>
 @endif
-
-{{-- Success messages --}}
-@if (false)
-    <div {{ $attributes }}>
-        <div class="font-medium text-red-600">
-            {{ __('Success!') }}
-        </div>
-
-        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-            {{-- Success Message --}}
-        </ul>
-    </div>
-@endif

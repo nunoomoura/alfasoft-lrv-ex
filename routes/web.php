@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard', ['contacts' =>  Contact::get()]);
+    return view('dashboard', ['contacts' =>  Contact::paginate(10)]);
 })->name('dashboard');
 
 Route::middleware('auth')->prefix('contacts')->name('contacts.')->group(function () {

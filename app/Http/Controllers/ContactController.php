@@ -14,9 +14,9 @@ class ContactController extends Controller
     }
     public function store(ContactRequest $request)
     {
-        Contact::create($request->validated());
+        $contact = Contact::create($request->validated());
 
-        return redirect()->back()->withSuccess('Contact created successfully');
+        return redirect()->route('contacts.show', $contact)->withSuccess('Contact created successfully');
     }
 
     public function show(Contact $contact)
@@ -29,5 +29,11 @@ class ContactController extends Controller
         $contact->update($request->validated());
 
         return redirect()->back()->withSuccess('Contact updated successfully');
+    }
+
+    public function delete(Contact $contact) {
+        $contact->delete();
+
+        return redirect()->route('dashboard');
     }
 }
