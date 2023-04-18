@@ -20,6 +20,7 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "pestphp/pest": "1.x",
+        "pestphp/pest-plugin-laravel": "1.x",
         "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {

@@ -28,7 +28,7 @@ class ContactController extends Controller
     {
         $contact->update($request->validated());
 
-        return redirect()->back()->withSuccess('Contact updated successfully');
+        return redirect()->route('contacts.show', $contact)->withSuccess('Contact updated successfully');
     }
 
     public function delete(Contact $contact) {
